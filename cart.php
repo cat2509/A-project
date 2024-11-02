@@ -8,7 +8,7 @@ if (!isset($_SESSION['cart'])) {
 
 // Sample products (in a real application, this data might come from a database)
 $products = [
-    'product1' => ['name' => 'Product 1', 'price' => 500],
+    'product1' => ['name' => 'Product 1', 'price' => 499],
     'product2' => ['name' => 'Product 2', 'price' => 300],
     'product3' => ['name' => 'Product 3', 'price' => 150],
 ];

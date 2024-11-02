@@ -51,7 +51,10 @@
               <div class="image-section" style="background-image: url('/F1.jpeg')"></div>
               <h4>Handcraft Fruit Basket</h4>
               <p>₹399</p>
-              <a href="checkout.html"><button class="add_cart">Add to Cart</button></a>
+              <a href="cart.php">
+    <button class="add_cart">Add to Cart</button>
+</a>
+
             </div>
           </div>
           <div class="outer-box">
