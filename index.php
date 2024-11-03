@@ -14,6 +14,42 @@
 <body>
   <header>
     <div class="navbar">
+
+      <?php
+      // Database connection credentials
+      $servername = "localhost";
+      $username = "root";
+      $database = "apn-e-dukaan";
+
+      try {
+          // Create a new PDO instance
+          $conn = new PDO("mysql:host=$servername;dbname=$database", $username);
+          // Set the PDO error mode to exception
+          $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      } catch (PDOException $e) {
+          // Handle connection error
+          die("Connection failed: " . $e->getMessage());
+      }
+      ?>
+
+      <?php
+      // SQL query to fetch data
+      $sql = "SELECT * FROM users";
+      $stmt = $conn->prepare($sql);  // Prepare the statement
+      $stmt->execute();  // Execute the statement
+
+      // Check if there are any results
+      if ($stmt->rowCount() > 0) {
+          // Loop through the results
+          while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+              // Access data by column name
+              echo "$row["email"] . "<br>";
+          }
+      } else {
+          echo "0 results";
+      }
+      ?>
+
       <div class="logo">
         <h1>Apn-E-Dukaan</h1>
       </div>
