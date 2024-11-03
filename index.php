@@ -43,7 +43,7 @@
           // Loop through the results
           while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
               // Access data by column name
-              echo "$row["email"] . "<br>";
+              echo $row["email"] . "<br>";
           }
       } else {
           echo "0 results";
