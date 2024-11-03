@@ -40,7 +40,7 @@
       $stmt = $conn->prepare($sql);  // Prepare the statement
       $stmt->execute();  // Execute the statement
 
-      echo "Fetching" . "<br>"
+      echo "Fetching" . "<br>";
 
       // Check if there are any results
       if ($stmt->rowCount() > 0) {
@@ -77,7 +77,7 @@
 
   <main>
     <div class="hero-section">
-    <div class="hero-image" style="background-image: url('/F79.2.jpg')"></div>
+    <div class="hero-image" style="background-image: url('/A-project/F79.2.jpg')"></div>
     </div>
 
     <div class="Flash">
@@ -88,7 +88,7 @@
         <div class="shop-section">
           <div class="outer-box">
             <div class="box-content">
-              <div class="image-section" style="background-image: url('/F1.jpeg')"></div>
+              <div class="image-section" style="background-image: url('/A-project/F1.jpeg')"></div>
               <h4>Handcraft Fruit Basket</h4>
               <p>₹399</p>
               <a href="cart.php">
@@ -99,7 +99,7 @@
           </div>
           <div class="outer-box">
             <div class="box-content">
-              <div class="image-section" style="background-image: url('/F5.jpg')"></div>
+              <div class="image-section" style="background-image: url('/A-project/F5.jpg')"></div>
               <h4>Mirror</h4>   
 
               <p>₹399</p>
@@ -108,7 +108,7 @@
           </div>
           <div class="outer-box">
             <div class="box-content">
-              <div class="image-section" style="background-image: url('/F3.jpg');"></div>
+              <div class="image-section" style="background-image: url('/A-project/F3.jpg');"></div>
               <h4>Woven Basket </h4>
               <p>₹399</p>
               <button class="add_cart">Add to Cart</button>
@@ -116,7 +116,7 @@
           </div>
           <div class="outer-box">
             <div class="box-content">
-              <div class="image-section" style="background-image: url('/F8.jpg');"></div>
+              <div class="image-section" style="background-image: url('/A-project/F8.jpg');"></div>
               <h4>Lotus Shaped  Candle Holder with Metal Base</h4>
               <p>₹399</p>
               <button class="add_cart">Add to Cart</button>
@@ -124,7 +124,7 @@
           </div>
           <div class="outer-box">
             <div class="box-content">
-              <div class="image-section" style="background-image: url('/F7\ \(2\).jpg');"></div>
+              <div class="image-section" style="background-image: url('/A-project/F7\ \(2\).jpg');"></div>
               <h4>Goodpick 2pack Jute Hanging Basket</h4>
               <p>₹399</p>
               <button class="add_cart">Add to Cart</button>
@@ -157,7 +157,7 @@
         <div class="shop-section">
           <div class="outer-box">
             <div class="box-content">
-              <div class="image-section" style="background-image: url('/F9.jpg')"></div>
+              <div class="image-section" style="background-image: url('/A-project/F9.jpg')"></div>
               <h4>Glass Home Decor</h4>
               <p>₹399</p>
               <button class="add_cart">Add to Cart</button>
@@ -165,7 +165,7 @@
           </div>
           <div class="outer-box">
             <div class="box-content">
-              <div class="image-section" style="background-image: url('/F10\ \(1\).jpg')"></div>
+              <div class="image-section" style="background-image: url('/A-project/F10\ \(1\).jpg')"></div>
               <h4>Pen Holder with Clock </h4>
               <p>₹399</p>
               <button class="add_cart">Add to Cart</button>
@@ -173,7 +173,7 @@
           </div>
           <div class="outer-box">
             <div class="box-content">
-              <div class="image-section" style="background-image: url('/F11.jpg')"></div>
+              <div class="image-section" style="background-image: url('/A-project/F11.jpg')"></div>
               <h4>Ram Mandir Photo Frame</h4>
               <p>₹899</p>
               <button class="add_cart">Add to Cart</button>
@@ -181,7 +181,7 @@
           </div>
           <div class="outer-box">
             <div class="box-content">
-              <div class="image-section" style="background-image: url('/F12.jpg')"></div>
+              <div class="image-section" style="background-image: url('/A-project/F12.jpg')"></div>
               <h4>Wall hanging of crochet</h4>
               <p>₹399</p>
               <button class="add_cart">Add to Cart</button>
@@ -189,7 +189,7 @@
           </div>
           <div class="outer-box">
             <div class="box-content">
-              <div class="image-section" style="background-image: url('/F14.jpg')" ></div>
+              <div class="image-section" style="background-image: url('/A-project/F14.jpg')" ></div>
               <h4>Analogue Wall clock</h4>
               <p>₹399</p>
               <button class="add_cart">Add to Cart</button>
@@ -197,7 +197,7 @@
           </div>
           <div class="outer-box">
             <div class="box-content">
-              <div class="image-section" style="background-image: url('/F16.jpg')"></div>
+              <div class="image-section" style="background-image: url('/A-project/F16.jpg')"></div>
               <h4>Basket</h4>
               <p>₹399</p>
               <button class="add_cart">Add to Cart</button>
@@ -205,7 +205,7 @@
           </div>
           <div class="outer-box">
             <div class="box-content">
-              <div class="image-section" style="background-image: url('/F13\(\ 2\).jpg')"></div>
+              <div class="image-section" style="background-image: url('/A-project/F13\(\ 2\).jpg')"></div>
               <h4>Basket</h4>
               <p>₹399</p>
               <button class="add_cart">Add to Cart</button>
@@ -213,7 +213,7 @@
           </div>
           <div class="outer-box">
             <div class="box-content">
-              <div class="image-section" style="background-image: url('/F17.jpg')"></div>
+              <div class="image-section" style="background-image: url('/A-project/F17.jpg')"></div>
               <h4>Basket</h4>
               <p>₹399</p>
               <button class="add_cart">Add to Cart</button>
@@ -221,7 +221,7 @@
           </div>
           <div class="outer-box">
             <div class="box-content">
-              <div class="image-section" style="background-image: url('/F18.jpg')"></div>
+              <div class="image-section" style="background-image: url('/A-project/F18.jpg')"></div>
               <h4>Basket</h4>
               <p>₹399</p>
               <button class="add_cart">Add to Cart</button>
@@ -229,7 +229,7 @@
           </div>
           <div class="outer-box">
             <div class="box-content">
-              <div class="image-section" style="background-image: url('/F19.jpg')"></div>
+              <div class="image-section" style="background-image: url('/A-project/F19.jpg')"></div>
               <h4>Basket</h4>
               <p>₹399</p>
               <button class="add_cart">Add to Cart</button>
@@ -247,7 +247,7 @@
         <div class="shop-section">
           <div class="outer-box">
             <div class="box-content">
-              <div class="image-section" style="background-image: url('/F20.jpg')"></div>
+              <div class="image-section" style="background-image: url('/A-project/F20.jpg')"></div>
               <h4>Handcraft Fruit Basket</h4>
               <p>₹399</p>
               <button class="add_cart">Add to Cart</button>
@@ -255,7 +255,7 @@
           </div>
           <div class="outer-box">
             <div class="box-content">
-              <div class="image-section" style="background-image: url('/F21.jpg')"></div>
+              <div class="image-section" style="background-image: url('/A-project/F21.jpg')"></div>
               <h4>Pot</h4>
               <p>₹399</p>
               <button class="add_cart">Add to Cart</button>
@@ -263,7 +263,7 @@
           </div>
           <div class="outer-box">
             <div class="box-content">
-              <div class="image-section" style="background-image: url('/F22\(1\).jpg')"></div>
+              <div class="image-section" style="background-image: url('/A-project/F22\(1\).jpg')"></div>
               <h4>Design Coasters</h4>
               <p>₹399</p>
               <button class="add_cart">Add to Cart</button>
@@ -271,7 +271,7 @@
           </div>
           <div class="outer-box">
             <div class="box-content">
-              <div class="image-section" style="background-image: url('/F23.jpeg')"></div>
+              <div class="image-section" style="background-image: url('/A-project/F23.jpeg')"></div>
               <h4>Basket</h4>
               <p>₹399</p>
               <button class="add_cart">Add to Cart</button>
@@ -279,7 +279,7 @@
           </div>
           <div class="outer-box">
             <div class="box-content">
-              <div class="image-section" style="background-image: url('/F26.jpg')"></div>
+              <div class="image-section" style="background-image: url('/A-project/F26.jpg')"></div>
               <h4>Basket</h4>
               <p>₹399</p>
               <button class="add_cart">Add to Cart</button>
@@ -287,7 +287,7 @@
           </div>
           <div class="outer-box">
             <div class="box-content">
-              <div class="image-section" style="background-image: url('/F29.jpg')"></div>
+              <div class="image-section" style="background-image: url('/A-project/F29.jpg')"></div>
               <h4>Basket</h4>
               <p>₹399</p>
               <button class="add_cart">Add to Cart</button>
@@ -295,7 +295,7 @@
           </div>
           <div class="outer-box">
             <div class="box-content">
-              <div class="image-section" style="background-image: url('/F31.jpg')"></div>
+              <div class="image-section" style="background-image: url('/A-project/F31.jpg')"></div>
               <h4>Basket</h4>
               <p>₹399</p>
               <button class="add_cart">Add to Cart</button>
@@ -303,7 +303,7 @@
           </div>
           <div class="outer-box">
             <div class="box-content">
-              <div class="image-section" style="background-image: url('/F45.jpg')"></div>
+              <div class="image-section" style="background-image: url('/A-project/F45.jpg')"></div>
               <h4>Basket</h4>
               <p>₹399</p>
               <button class="add_cart">Add to Cart</button>
@@ -311,7 +311,7 @@
           </div>
           <div class="outer-box">
             <div class="box-content">
-              <div class="image-section" style="background-image: url('/F44\(1\).jpg')"></div>
+              <div class="image-section" style="background-image: url('/A-project/F44\(1\).jpg')"></div>
               <h4>Basket</h4>
               <p>₹399</p>
               <button class="add_cart">Add to Cart</button>
@@ -319,7 +319,7 @@
           </div>
           <div class="outer-box">
             <div class="box-content">
-              <div class="image-section" style="background-image: url('/F33.jpg')"></div>
+              <div class="image-section" style="background-image: url('/A-project/F33.jpg')"></div>
               <h4>Basket</h4>
               <p>₹399</p>
               <button class="add_cart">Add to Cart</button>
@@ -335,12 +335,12 @@
           <h3>New Arrival</h3>
         </div>
         <div class="arrival">
-          <div class="left-image" style="background-image: url('/F2.jpeg');"></div>
+          <div class="left-image" style="background-image: url('/A-project/F2.jpeg');"></div>
           <div class="right-image">
-            <div class="up-image" style="background-image: url('/F2.jpeg');"></div>
+            <div class="up-image" style="background-image: url('/A-project/F2.jpeg');"></div>
             <div class="down-image">
-              <div class="part-1" style="background-image: url('/F1.jpeg');"></div>
-              <div class="part-1" style="background-image: url('/F2.jpeg');"></div>
+              <div class="part-1" style="background-image: url('/A-project/F1.jpeg');"></div>
+              <div class="part-1" style="background-image: url('/A-project/F2.jpeg');"></div>
             </div>
           </div>
         </div>
@@ -348,17 +348,17 @@
     </div>
 
     <!-- <div class="features">
-      <div class="feature-box" style="background-image: url('/f1.png');">
+      <div class="feature-box" style="background-image: url('/A-project/f1.png');">
         <h6>Free Delivery</h6>
       </div>
       <div class="feature-box">
         <img src="/f2.png" alt="">
         <h6>On time Delivery</h6>
       </div>
-      <div class="feature-box" style="background-image: url('/f5.png');">
+      <div class="feature-box" style="background-image: url('/A-project/f5.png');">
         <h6>Happy sell</h6>
       </div>
-      <div class="feature-box" style="background-image: url('/f6.png');">
+      <div class="feature-box" style="background-image: url('/A-project/f6.png');">
         <h6>24/7 Customer Service</h6>
       </div>
     </div> -->
