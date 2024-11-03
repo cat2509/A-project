@@ -26,9 +26,11 @@
           $conn = new PDO("mysql:host=$servername;dbname=$database", $username);
           // Set the PDO error mode to exception
           $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+          echo "Connected" . "<br>";
       } catch (PDOException $e) {
           // Handle connection error
           die("Connection failed: " . $e->getMessage());
+          echo "Failed" . "<br>";
       }
       ?>
 
@@ -37,6 +39,8 @@
       $sql = "SELECT * FROM users";
       $stmt = $conn->prepare($sql);  // Prepare the statement
       $stmt->execute();  // Execute the statement
+
+      echo "Fetching" . "<br>"
 
       // Check if there are any results
       if ($stmt->rowCount() > 0) {
