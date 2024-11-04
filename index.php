@@ -14,44 +14,29 @@
 <body>
   <header>
     <div class="navbar">
-
       <?php
-      // Database connection credentials
       $servername = "localhost";
       $username = "root";
       $database = "apn-e-dukaan";
 
       try {
-          // Create a new PDO instance
-          $conn = new PDO("mysql:host=$servername;dbname=$database", $username);
-          // Set the PDO error mode to exception
-          $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-          echo "Connected" . "<br>";
+        $conn = new PDO("mysql:host=$servername;dbname=$database", $username);
+        // Set the PDO error mode to exception
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
       } catch (PDOException $e) {
-          // Handle connection error
-          die("Connection failed: " . $e->getMessage());
-          echo "Failed" . "<br>";
+        // Handle connection error
+        die("Connection failed: " . $e->getMessage());
+        echo "Failed" . "<br>";
       }
       ?>
 
       <?php
       // SQL query to fetch data
-      $sql = "SELECT * FROM users";
-      $stmt = $conn->prepare($sql);  // Prepare the statement
-      $stmt->execute();  // Execute the statement
+      $sql = "SELECT * FROM product ORDER BY ID";
+      $stmt = $conn->prepare($sql);
+      $stmt->execute();
 
-      echo "Fetching" . "<br>";
-
-      // Check if there are any results
-      if ($stmt->rowCount() > 0) {
-          // Loop through the results
-          while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-              // Access data by column name
-              echo $row["email"] . "<br>";
-          }
-      } else {
-          echo "0 results";
-      }
+      $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
       ?>
 
       <div class="logo">
@@ -77,7 +62,7 @@
 
   <main>
     <div class="hero-section">
-    <div class="hero-image" style="background-image: url('/A-project/F79.2.jpg')"></div>
+      <div class="hero-image" style="background-image: url('http://localhost/apn-e-dukaan/F79.jpg')"></div>
     </div>
 
     <div class="Flash">
@@ -86,50 +71,25 @@
           <h3>Flash Sales</h3>
         </div>
         <div class="shop-section">
-          <div class="outer-box">
-            <div class="box-content">
-              <div class="image-section" style="background-image: url('/A-project/F1.jpeg')"></div>
-              <h4>Handcraft Fruit Basket</h4>
-              <p>₹399</p>
-              <a href="cart.php">
-    <button class="add_cart">Add to Cart</button>
-</a>
+          <?php if (!empty($products)): ?>
+            <?php foreach (array_slice($products, 0, 5) as $product): ?>
+              <div class="outer-box">
+                <div class="box-content">
+                  <div class="image-section" style="background-image: url('http://localhost/apn-e-dukaan/<?php echo $product["URL"]; ?>')"></div>
+                  <h4><?php echo $product["Name"]; ?></h4>
+                  <p>₹<?php echo $product["Price"]; ?></p>
 
-            </div>
-          </div>
-          <div class="outer-box">
-            <div class="box-content">
-              <div class="image-section" style="background-image: url('/A-project/F5.jpg')"></div>
-              <h4>Mirror</h4>   
+                  <form action='cart.php' method="POST">
+                    <input type="hidden" name="ID" value="<?php echo $product['ID']; ?>">
+                    <button class="add_cart" type="submit">Add to Cart</button>
+                  </form>
 
-              <p>₹399</p>
-              <button class="add_cart">Add to Cart</button>
-            </div>
-          </div>
-          <div class="outer-box">
-            <div class="box-content">
-              <div class="image-section" style="background-image: url('/A-project/F3.jpg');"></div>
-              <h4>Woven Basket </h4>
-              <p>₹399</p>
-              <button class="add_cart">Add to Cart</button>
-            </div>
-          </div>
-          <div class="outer-box">
-            <div class="box-content">
-              <div class="image-section" style="background-image: url('/A-project/F8.jpg');"></div>
-              <h4>Lotus Shaped  Candle Holder with Metal Base</h4>
-              <p>₹399</p>
-              <button class="add_cart">Add to Cart</button>
-            </div>
-          </div>
-          <div class="outer-box">
-            <div class="box-content">
-              <div class="image-section" style="background-image: url('/A-project/F7\ \(2\).jpg');"></div>
-              <h4>Goodpick 2pack Jute Hanging Basket</h4>
-              <p>₹399</p>
-              <button class="add_cart">Add to Cart</button>
-            </div>
-          </div>
+                </div>
+              </div>
+            <?php endforeach; ?>
+          <?php else: ?>
+            <h1>No Products</h1>
+          <?php endif; ?>
         </div>
       </div>
     </div>
@@ -155,86 +115,25 @@
           <h3>Best Selling Products of the month</h3>
         </div>
         <div class="shop-section">
-          <div class="outer-box">
-            <div class="box-content">
-              <div class="image-section" style="background-image: url('/A-project/F9.jpg')"></div>
-              <h4>Glass Home Decor</h4>
-              <p>₹399</p>
-              <button class="add_cart">Add to Cart</button>
-            </div>
-          </div>
-          <div class="outer-box">
-            <div class="box-content">
-              <div class="image-section" style="background-image: url('/A-project/F10\ \(1\).jpg')"></div>
-              <h4>Pen Holder with Clock </h4>
-              <p>₹399</p>
-              <button class="add_cart">Add to Cart</button>
-            </div>
-          </div>
-          <div class="outer-box">
-            <div class="box-content">
-              <div class="image-section" style="background-image: url('/A-project/F11.jpg')"></div>
-              <h4>Ram Mandir Photo Frame</h4>
-              <p>₹899</p>
-              <button class="add_cart">Add to Cart</button>
-            </div>
-          </div>
-          <div class="outer-box">
-            <div class="box-content">
-              <div class="image-section" style="background-image: url('/A-project/F12.jpg')"></div>
-              <h4>Wall hanging of crochet</h4>
-              <p>₹399</p>
-              <button class="add_cart">Add to Cart</button>
-            </div>
-          </div>
-          <div class="outer-box">
-            <div class="box-content">
-              <div class="image-section" style="background-image: url('/A-project/F14.jpg')" ></div>
-              <h4>Analogue Wall clock</h4>
-              <p>₹399</p>
-              <button class="add_cart">Add to Cart</button>
-            </div>
-          </div>
-          <div class="outer-box">
-            <div class="box-content">
-              <div class="image-section" style="background-image: url('/A-project/F16.jpg')"></div>
-              <h4>Basket</h4>
-              <p>₹399</p>
-              <button class="add_cart">Add to Cart</button>
-            </div>
-          </div>
-          <div class="outer-box">
-            <div class="box-content">
-              <div class="image-section" style="background-image: url('/A-project/F13\(\ 2\).jpg')"></div>
-              <h4>Basket</h4>
-              <p>₹399</p>
-              <button class="add_cart">Add to Cart</button>
-            </div>
-          </div>
-          <div class="outer-box">
-            <div class="box-content">
-              <div class="image-section" style="background-image: url('/A-project/F17.jpg')"></div>
-              <h4>Basket</h4>
-              <p>₹399</p>
-              <button class="add_cart">Add to Cart</button>
-            </div>
-          </div>
-          <div class="outer-box">
-            <div class="box-content">
-              <div class="image-section" style="background-image: url('/A-project/F18.jpg')"></div>
-              <h4>Basket</h4>
-              <p>₹399</p>
-              <button class="add_cart">Add to Cart</button>
-            </div>
-          </div>
-          <div class="outer-box">
-            <div class="box-content">
-              <div class="image-section" style="background-image: url('/A-project/F19.jpg')"></div>
-              <h4>Basket</h4>
-              <p>₹399</p>
-              <button class="add_cart">Add to Cart</button>
-            </div>
-          </div>
+          <?php if (!empty($products)): ?>
+            <?php foreach (array_slice($products, 5, 10) as $product): ?>
+              <div class="outer-box">
+                <div class="box-content">
+                  <div class="image-section" style="background-image: url('http://localhost/apn-e-dukaan/<?php echo $product["URL"]; ?>')"></div>
+                  <h4><?php echo $product["Name"]; ?></h4>
+                  <p>₹<?php echo $product["Price"]; ?></p>
+
+                  <form action='cart.php' method="POST">
+                    <input type="hidden" name="ID" value="<?php echo $product['ID']; ?>">
+                    <button class="add_cart" type="submit">Add to Cart</button>
+                  </form>
+
+                </div>
+              </div>
+            <?php endforeach; ?>
+          <?php else: ?>
+            <h1>No Products</h1>
+          <?php endif; ?>
         </div>
       </div>
     </div>
@@ -245,86 +144,25 @@
           <h3>Explore-More</h3>
         </div>
         <div class="shop-section">
-          <div class="outer-box">
-            <div class="box-content">
-              <div class="image-section" style="background-image: url('/A-project/F20.jpg')"></div>
-              <h4>Handcraft Fruit Basket</h4>
-              <p>₹399</p>
-              <button class="add_cart">Add to Cart</button>
-            </div>
-          </div>
-          <div class="outer-box">
-            <div class="box-content">
-              <div class="image-section" style="background-image: url('/A-project/F21.jpg')"></div>
-              <h4>Pot</h4>
-              <p>₹399</p>
-              <button class="add_cart">Add to Cart</button>
-            </div>
-          </div>
-          <div class="outer-box">
-            <div class="box-content">
-              <div class="image-section" style="background-image: url('/A-project/F22\(1\).jpg')"></div>
-              <h4>Design Coasters</h4>
-              <p>₹399</p>
-              <button class="add_cart">Add to Cart</button>
-            </div>
-          </div>
-          <div class="outer-box">
-            <div class="box-content">
-              <div class="image-section" style="background-image: url('/A-project/F23.jpeg')"></div>
-              <h4>Basket</h4>
-              <p>₹399</p>
-              <button class="add_cart">Add to Cart</button>
-            </div>
-          </div>
-          <div class="outer-box">
-            <div class="box-content">
-              <div class="image-section" style="background-image: url('/A-project/F26.jpg')"></div>
-              <h4>Basket</h4>
-              <p>₹399</p>
-              <button class="add_cart">Add to Cart</button>
-            </div>
-          </div>
-          <div class="outer-box">
-            <div class="box-content">
-              <div class="image-section" style="background-image: url('/A-project/F29.jpg')"></div>
-              <h4>Basket</h4>
-              <p>₹399</p>
-              <button class="add_cart">Add to Cart</button>
-            </div>
-          </div>
-          <div class="outer-box">
-            <div class="box-content">
-              <div class="image-section" style="background-image: url('/A-project/F31.jpg')"></div>
-              <h4>Basket</h4>
-              <p>₹399</p>
-              <button class="add_cart">Add to Cart</button>
-            </div>
-          </div>
-          <div class="outer-box">
-            <div class="box-content">
-              <div class="image-section" style="background-image: url('/A-project/F45.jpg')"></div>
-              <h4>Basket</h4>
-              <p>₹399</p>
-              <button class="add_cart">Add to Cart</button>
-            </div>
-          </div>
-          <div class="outer-box">
-            <div class="box-content">
-              <div class="image-section" style="background-image: url('/A-project/F44\(1\).jpg')"></div>
-              <h4>Basket</h4>
-              <p>₹399</p>
-              <button class="add_cart">Add to Cart</button>
-            </div>
-          </div>
-          <div class="outer-box">
-            <div class="box-content">
-              <div class="image-section" style="background-image: url('/A-project/F33.jpg')"></div>
-              <h4>Basket</h4>
-              <p>₹399</p>
-              <button class="add_cart">Add to Cart</button>
-            </div>
-          </div>
+          <?php if (!empty($products)): ?>
+            <?php foreach (array_slice($products, 15, 10) as $product): ?>
+              <div class="outer-box">
+                <div class="box-content">
+                  <div class="image-section" style="background-image: url('http://localhost/apn-e-dukaan/<?php echo $product["URL"]; ?>')"></div>
+                  <h4><?php echo $product["Name"]; ?></h4>
+                  <p>₹<?php echo $product["Price"]; ?></p>
+
+                  <form action='cart.php' method="POST">
+                    <input type="hidden" name="ID" value="<?php echo $product['ID']; ?>">
+                    <button class="add_cart" type="submit">Add to Cart</button>
+                  </form>
+
+                </div>
+              </div>
+            <?php endforeach; ?>
+          <?php else: ?>
+            <h1>No Products</h1>
+          <?php endif; ?>
         </div>
       </div>
     </div>
@@ -335,33 +173,17 @@
           <h3>New Arrival</h3>
         </div>
         <div class="arrival">
-          <div class="left-image" style="background-image: url('/A-project/F2.jpeg');"></div>
+          <div class="left-image" style="background-image: url('http://localhost/apn-e-dukaan/F2.jpeg');"></div>
           <div class="right-image">
-            <div class="up-image" style="background-image: url('/A-project/F2.jpeg');"></div>
+            <div class="up-image" style="background-image: url('http://localhost/apn-e-dukaan/F2.jpeg');"></div>
             <div class="down-image">
-              <div class="part-1" style="background-image: url('/A-project/F1.jpeg');"></div>
-              <div class="part-1" style="background-image: url('/A-project/F2.jpeg');"></div>
+              <div class="part-1" style="background-image: url('http://localhost/apn-e-dukaan/F1.jpeg');"></div>
+              <div class="part-1" style="background-image: url('http://localhost/apn-e-dukaan/F2.jpeg');"></div>
             </div>
           </div>
         </div>
       </div>
     </div>
-
-    <!-- <div class="features">
-      <div class="feature-box" style="background-image: url('/A-project/f1.png');">
-        <h6>Free Delivery</h6>
-      </div>
-      <div class="feature-box">
-        <img src="/f2.png" alt="">
-        <h6>On time Delivery</h6>
-      </div>
-      <div class="feature-box" style="background-image: url('/A-project/f5.png');">
-        <h6>Happy sell</h6>
-      </div>
-      <div class="feature-box" style="background-image: url('/A-project/f6.png');">
-        <h6>24/7 Customer Service</h6>
-      </div>
-    </div> -->
 
   </main>
 
