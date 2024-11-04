@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation</title>
+    <style>
+        /* styles.css */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #f0f4ff, #d9e7ff);
+}
+
+.confirmation-container {
+    text-align: center;
+    padding: 30px;
+    background-color: #FFFFFF;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 400px;
+    animation: fadeIn 1s ease;
+}
+
+.message-box {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.checkmark {
+    font-size: 60px;
+    color: #00C853; /* Green checkmark */
+    margin-bottom: 15px;
+    animation: bounce 1s ease infinite alternate;
+}
+
+h1 {
+    font-size: 22px;
+    color: #1F2937; /* Dark text */
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+p {
+    font-size: 16px;
+    color: #6B7280;
+}
+
+/* Animations */
+@keyframes bounce {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-8px); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@media (max-width: 768px) {
+    .confirmation-container {
+        padding: 20px;
+        width: 90%;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <div class="confirmation-container">
+        <div class="message-box">
+            <div class="checkmark">&#10004;</div> <!-- Checkmark symbol -->
+            <h1>Order Confirmed Successfully</h1>
+            <p>Thank you for shopping with us! Your order is on its way.</p>
+        </div>
+    </div>
+</body>
+</html>
