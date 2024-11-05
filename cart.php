@@ -139,39 +139,52 @@
                 echo "Failed" . "<br>";
             }
 
+            try {
+                if (isset($_POST['ID'])) {
+                    $ID = $_POST['ID'];
+
+                    $stmt1 = $conn->prepare("SELECT * FROM cart WHERE ID = :ID");
+                    $stmt1->execute(['ID' => $ID]);
+
+                    if ($stmt1->rowCount() > 0) {
+                        $row = $stmt1->fetch(PDO::FETCH_ASSOC);
+                        $new_quant = $row["quantity"] + 1;
+
+                        $update_stmt = $conn->prepare("UPDATE cart SET quantity = :quantity WHERE ID = :ID");
+                        $update_stmt->execute(["quantity" => $new_quant, "ID" => $ID]);
+                    } else {
+                        $insert_stmt = $conn->prepare("INSERT INTO cart VALUES (:ID, 1)");
+                        $insert_stmt->execute(["ID" => $ID]);
+                    }
+                } else {
+                }
+            } catch (PDOException $e) {
+                echo "No Product";
+            }
+
             $sql2 = "SELECT * FROM cart;";
             $stmt2 = $conn->prepare($sql2);
-            $stmt->execute();
+            $stmt2->execute();
 
-            $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $sql3 = "SELECT * FROM product;";
+            $stmt3 = $conn->prepare($sql3);
+            $stmt3->execute();
 
-            // if (isset($_POST['ID'])) {
-            //     $ID = $_POST['ID'];
-            //
-            //     // Insert product ID into the cart table
-            //     $sql = "INSERT INTO cart (ID) VALUES (:ID)";
-            //     $stmt = $conn->prepare($sql);
-            //     $stmt->bindParam(":ID", $ID, PDO::PARAM_INT);
-            //
-            //     if ($stmt->execute()) {
-            //         echo "Product added to cart successfully!";
-            //     } else {
-            //         echo "Error adding Product to cart";
-            //     }
-            // } else {
-            //     echo "No product ID specified.";
+            $cart = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+            $products = $stmt3->fetchAll(PDO::FETCH_ASSOC);
 
-            // Calculate subtotal and total
             $subtotal = 0;
 
-            // foreach ($_SESSION['cart'] as $productId => $quantity) {
-            //     $subtotal += $products[$productId]['price'] * $quantity;
-            // }
+            foreach ($cart as $cartItem) {
+                foreach ($products as $prod) {
+                    if ($prod['ID'] == $cartItem['ID']) {
+                        $subtotal += $prod['Price'] * $cartItem['quantity'];
+                    }
+                }
+            }
 
             $shipping = 50; // Fixed shipping cost
             $total = $subtotal + $shipping;
-
-            echo "HELLO";
 
             ?>
             <h1>Your Cart</h1>
@@ -188,32 +201,29 @@
                 </thead>
                 <tbody>
                     <!-- Example of a product in the cart -->
-                    <tr>
-                        <td>Product 1</td>
-                        <td>1</td>
-                        <td>₹500.00</td>
-                        <td>₹500.00</td>
-                    </tr>
-                    <tr>
-                        <td>Product 2</td>
-                        <td>2</td>
-                        <td>₹300.00</td>
-                        <td>₹600.00</td>
-                    </tr>
-                    <tr>
-                        <td>Product 3</td>
-                        <td>1</td>
-                        <td>₹150.00</td>
-                        <td>₹150.00</td>
+                    <?php if (!empty($cart)): ?>
+                        <?php foreach ($cart as $cartItem): ?>
+                            <?php foreach ($products as $prod): ?>
+                                <?php if ($cartItem['ID'] == $prod['ID']): ?>
+                                    <tr>
+                                        <td><?php echo $prod["Name"]; ?></td>
+                                        <td><?php echo $cartItem["quantity"]; ?></td>
+                                        <td><?php echo "₹" . $prod["Price"]; ?></td>
+                                        <td><?php echo $prod["Price"] * $cartItem["quantity"]; ?></td>
+                                    </tr>
+                                <?php endif ?>
+                            <?php endforeach ?>
+                        <?php endforeach ?>
+                    <?php endif ?>
                     </tr>
                 </tbody>
             </table>
 
             <div class="cart-summary">
                 <h3>Cart Summary</h3>
-                <p>Subtotal: <strong>₹1,250.00</strong></p>
+                <p>Subtotal: <strong>₹<?php echo $subtotal - 50; ?></strong></p>
                 <p>Shipping: <strong>₹50.00</strong></p>
-                <p>Total: <strong>₹1,300.00</strong></p>
+                <p>Total: <strong>₹<?php echo $subtotal; ?></strong></p>
             </div>
 
             <a href="./checkout.html">
